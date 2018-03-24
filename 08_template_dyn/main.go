@@ -6,7 +6,7 @@ import (
 	"text/template"
 )
 
-type Context struct {
+type context struct {
 	FirstName string
 	Mess      string
 }
@@ -23,8 +23,8 @@ func someFunc(w http.ResponseWriter, req *http.Request) {
 	tmpl, err := template.New("AnyName").Parse(doc)
 	log.Println(req.URL.Path)
 	if err == nil {
-		context := Context{"Todd", "more Go, please!"}
-		tmpl.Execute(w, context)
+		Context := context{"Todd", "more Go, please!"}
+		tmpl.Execute(w, Context)
 	}
 }
 
@@ -33,8 +33,8 @@ func HubertFunc(w http.ResponseWriter, req *http.Request) {
 	tmpl, err := template.New("AnyName").Parse(doc)
 	log.Println(req.URL.Path)
 	if err == nil {
-		context := Context{"Hubert", "I'm trouble maker"}
-		tmpl.Execute(w, context)
+		Context := context{"Hubert", "I'm trouble maker"}
+		tmpl.Execute(w, Context)
 	}
 }
 
@@ -43,8 +43,8 @@ func WolfFunc(w http.ResponseWriter, req *http.Request) {
 	tmpl, err := template.New("AnyName").Parse(doc)
 	log.Println(req.URL.Path)
 	if err == nil {
-		context := Context{"Mr Wolf", "I solve problems"}
-		tmpl.Execute(w, context)
+		Context := context{"Mr Wolf", "I solve problems"}
+		tmpl.Execute(w, Context)
 	}
 }
 
