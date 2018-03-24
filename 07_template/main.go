@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 	"text/template"
 )
@@ -13,8 +14,9 @@ func main() {
 func someFunc(w http.ResponseWriter, req *http.Request) {
 	w.Header().Add("Content-Type", "text/html")
 	tmpl, err := template.New("AnyName").Parse(doc)
+	log.Println(req.URL.Path)
 	if err == nil {
-		tmpl.Execute(w, nil)
+		tmpl.Execute(w, req.URL.Path[1:])
 	}
 }
 
@@ -26,7 +28,7 @@ const doc = `
 
 </head>
 <body>
-	<h1>Hello You!</h1>
+	<h1>Hello {{.}}!</h1>
 </body>
 </html>
 `
