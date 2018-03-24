@@ -10,8 +10,8 @@ type context struct {
 	FirstName string
 	Mess      string
 	URL       string
-	//Beers     []string
-	//Title     string
+	Beers     []string
+	Title     string
 }
 
 func main() {
@@ -28,8 +28,8 @@ func someFunc(w http.ResponseWriter, req *http.Request) {
 			"Hubert",
 			"more beer, please",
 			req.URL.Path,
-			//	[]string{"Tyskie", "Tesco Value", "Tesco Finest"},
-			//	"Awsome beers",
+			[]string{"Tyskie", "Tesco Value", "Tesco Finest"},
+			"Awsome beers",
 		}
 		tmpl.Execute(w, Context)
 	} else {
@@ -52,13 +52,17 @@ const doc = `
 {{if eq .URL "/nobeer"}}
 	<h2>Out of beer, {{.FirstName}}</h2>
 {{else}}
-	<h2>Yes, let's have some beer, {{.FirstName}}
-
+	<h2>Yes, let's have some beer, {{.FirstName}}</h2>
+	<ul>
+		{{range .Beers}}
+		<li>{{.}}</li>
+		{{end}}
+	</ul>
 {{end}}
 <hr>
 
 <h2>Here is some data:</h2>
-<p>{{.URL}}</p>
+<p>{{.}}</p>
 </body>
 </html>
 `
