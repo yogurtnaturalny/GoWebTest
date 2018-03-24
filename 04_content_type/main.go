@@ -21,19 +21,19 @@ func (*MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 
 		if strings.HasSuffix(path, ".css") {
 			contentType = "text/css"
-			log.Println(path)
+
 		} else if strings.HasSuffix(path, ".html") {
 			contentType = "text/html"
-			log.Println(path)
+
 		} else if strings.HasSuffix(path, ".js") {
 			contentType = "application/javascript"
-			log.Println(path)
+
 		} else if strings.HasSuffix(path, ".png") {
 			contentType = "image/png"
-			log.Println(path)
+
 		} else {
 			contentType = "text/plain"
-			log.Println("Bla bla bla ")
+
 		}
 
 		w.Header().Add("Content-Type", contentType)
