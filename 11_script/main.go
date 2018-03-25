@@ -9,7 +9,7 @@ import (
 
 //var Message string = "More beer, please!"
 
-var Message string = "alert('you have been pwned')"
+var message string = "alert('you have been pwned')"
 
 //var Message string = "<script>alert('you have been pwned, man!')</script>"
 
@@ -23,7 +23,7 @@ func someFunc(w http.ResponseWriter, req *http.Request) {
 	tmpl, err := template.New("AnyName").Parse(doc)
 	log.Println(req.URL.Path)
 	if err == nil {
-		tmpl.Execute(w, Message)
+		tmpl.Execute(w, message)
 	} else {
 		log.Panic("Something go wrong!")
 
